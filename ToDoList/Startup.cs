@@ -25,6 +25,10 @@ namespace ToDoList
 
     public void Configure(IApplicationBuilder app)
     {
+      app.UseStaticFiles();
+
+      app.UseDeveloperExceptionPage(); 
+
       app.UseDeveloperExceptionPage();
 
       app.UseMvc(routes =>
@@ -34,12 +38,10 @@ namespace ToDoList
           template: "{controller=Home}/{action=Index}/{id?}");
       });
 
-        app.Run(async (context) =>
-        {
-          await context.Response.WriteAsync("Something went wrong!");
-        });
-
-        app.UseDeveloperExceptionPage(); 
+      app.Run(async (context) =>
+      {
+        await context.Response.WriteAsync("Something went wrong!");
+      });
     }
   }
 }
